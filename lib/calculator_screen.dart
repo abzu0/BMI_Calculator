@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bmi/result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -229,6 +232,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                         if (weight>0) weight--;
                                       });
                                     },
+                                  heroTag: 'weight-',
                                   mini: true,
                                     child: Icon(
                                       Icons.remove,
@@ -246,6 +250,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                       weight++;
                                     });
                                   },
+                                  heroTag: 'weight+',
                                   mini: true,
                                   child: Icon(
                                     Icons.add,
@@ -297,6 +302,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                       if (age>0) age--;
                                     });
                                   },
+                                  heroTag: 'age-',
                                   mini: true,
                                   child: Icon(
                                     Icons.remove,
@@ -314,6 +320,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                       age++;
                                     });
                                   },
+                                  heroTag: 'age+',
                                   mini: true,
                                   child: Icon(
                                     Icons.add,
@@ -340,7 +347,19 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               color: secondaryColor,
 
               child: MaterialButton(
-                onPressed: (){},
+                onPressed: (){
+                  double result = weight / pow(height/100, 2);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResultScreen(
+                            age: age,
+                            isMale: isMale,
+                            result: result,
+                          ),
+                          )
+                  );
+                },
                 child: Text(
                   'CALCULATE',
                   style: TextStyle(
