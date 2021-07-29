@@ -1,4 +1,5 @@
 import 'package:bmi/calculator_screen.dart';
+import 'package:bmi/result_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return CalculatorScreen();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CalculatorScreen(),
+    );
   }
 }
 
